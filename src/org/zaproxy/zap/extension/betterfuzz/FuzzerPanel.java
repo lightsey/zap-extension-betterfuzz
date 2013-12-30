@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz;
+package org.zaproxy.zap.extension.betterfuzz;
 
 import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
@@ -39,7 +39,7 @@ import org.parosproxy.paros.Constant;
 import org.parosproxy.paros.control.Control;
 import org.parosproxy.paros.extension.AbstractPanel;
 import org.parosproxy.paros.view.View;
-import org.zaproxy.zap.extension.fuzz.impl.http.HttpFuzzerContentPanel;
+import org.zaproxy.zap.extension.betterfuzz.impl.http.HttpFuzzerContentPanel;
 import org.zaproxy.zap.utils.StickyScrollbarAdjustmentListener;
 import org.zaproxy.zap.view.ScanStatus;
 import org.zaproxy.zap.view.ZapToggleButton;
@@ -83,7 +83,7 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
 	private  void initialize() {
         this.setLayout(new CardLayout());
         this.setSize(474, 251);
-        this.setName(Constant.messages.getString("fuzz.panel.title"));
+        this.setName(Constant.messages.getString("betterfuzz.panel.title"));
 		this.setIcon(new ImageIcon(FuzzerPanel.class.getResource("/resource/icon/16/097.png")));
         this.add(getPanelCommand(), getPanelCommand().getName());
         
@@ -91,7 +91,7 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
         scanStatus = new ScanStatus(
         				new ImageIcon(
         					FuzzerPanel.class.getResource("/resource/icon/16/097.png")),
-        					Constant.messages.getString("fuzz.panel.title"));
+        					Constant.messages.getString("betterfuzz.panel.title"));
        
         View.getSingleton().getMainFrame().getMainFooterPanel().addFooterToolbarRightLabel(scanStatus.getCountLabel());
 
@@ -227,7 +227,7 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
 	private JButton getStartScanButton() {
 		if (startScanButton == null) {
 			startScanButton = new JButton();
-			startScanButton.setToolTipText(Constant.messages.getString("fuzz.toolbar.button.start"));
+			startScanButton.setToolTipText(Constant.messages.getString("betterfuzz.toolbar.button.start"));
 			startScanButton.setIcon(new ImageIcon(FuzzerPanel.class.getResource("/resource/icon/16/131.png")));
 			startScanButton.setEnabled(false);
 			startScanButton.addActionListener(new ActionListener () {
@@ -246,7 +246,7 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
 	private JButton getStopScanButton() {
 		if (stopScanButton == null) {
 			stopScanButton = new JButton();
-			stopScanButton.setToolTipText(Constant.messages.getString("fuzz.toolbar.button.stop"));
+			stopScanButton.setToolTipText(Constant.messages.getString("betterfuzz.toolbar.button.stop"));
 			stopScanButton.setIcon(new ImageIcon(FuzzerPanel.class.getResource("/resource/icon/16/142.png")));
 			stopScanButton.setEnabled(false);
 			stopScanButton.addActionListener(new ActionListener () {
@@ -262,8 +262,8 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
 	private JToggleButton getPauseScanButton() {
 		if (pauseScanButton == null) {
 			pauseScanButton = new ZapToggleButton();
-			pauseScanButton.setToolTipText(Constant.messages.getString("fuzz.toolbar.button.pause"));
-			pauseScanButton.setSelectedToolTipText(Constant.messages.getString("fuzz.toolbar.button.unpause"));
+			pauseScanButton.setToolTipText(Constant.messages.getString("betterfuzz.toolbar.button.pause"));
+			pauseScanButton.setSelectedToolTipText(Constant.messages.getString("betterfuzz.toolbar.button.unpause"));
 			pauseScanButton.setIcon(new ImageIcon(FuzzerPanel.class.getResource("/resource/icon/16/141.png")));
 			pauseScanButton.setEnabled(false);
 			pauseScanButton.addActionListener(new ActionListener () {
@@ -279,13 +279,13 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
 	private JButton getOptionsButton() {
 		if (optionsButton == null) {
 			optionsButton = new JButton();
-			optionsButton.setToolTipText(Constant.messages.getString("fuzz.toolbar.button.options"));
+			optionsButton.setToolTipText(Constant.messages.getString("betterfuzz.toolbar.button.options"));
 			optionsButton.setIcon(new ImageIcon(FuzzerPanel.class.getResource("/resource/icon/16/041.png")));
 			optionsButton.addActionListener(new ActionListener () {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Control.getSingleton().getMenuToolsControl().options(
-							Constant.messages.getString("fuzz.options.title"));
+							Constant.messages.getString("betterfuzz.options.title"));
 				}
 			});
 		}
@@ -309,7 +309,7 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
 			initialMessage.setEditable(false);
 			initialMessage.setFont(new java.awt.Font("Dialog", java.awt.Font.PLAIN, 12));
 			initialMessage.setContentType("text/html");
-			initialMessage.setText(Constant.messages.getString("fuzz.label.initialMessage"));
+			initialMessage.setText(Constant.messages.getString("betterfuzz.label.initialMessage"));
 		}
 		
 		return initialMessage;

@@ -1,4 +1,4 @@
-/*
+ /*
  * Zed Attack Proxy (ZAP) and its related class files.
  * 
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz;
+package org.zaproxy.zap.extension.betterfuzz;
 
 import java.io.BufferedReader;
 import java.io.File;

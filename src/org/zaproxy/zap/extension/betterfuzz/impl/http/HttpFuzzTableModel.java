@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz.impl.http;
+package org.zaproxy.zap.extension.betterfuzz.impl.http;
 
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -38,20 +38,20 @@ public class HttpFuzzTableModel extends AbstractTableModel {
     private static final Logger logger = Logger.getLogger(HttpFuzzTableModel.class);
     
     private static final String[] COLUMN_NAMES = {
-        Constant.messages.getString("fuzz.http.table.header.method"),
-        Constant.messages.getString("fuzz.http.table.header.uri"),
-        Constant.messages.getString("fuzz.http.table.header.status"),
-        Constant.messages.getString("fuzz.http.table.header.reason"),
-        Constant.messages.getString("fuzz.http.table.header.rtt"),
-        Constant.messages.getString("fuzz.http.table.header.size"),
-        Constant.messages.getString("fuzz.http.table.header.state"),
-        Constant.messages.getString("fuzz.http.table.header.fuzz")
+        Constant.messages.getString("betterfuzz.http.table.header.method"),
+        Constant.messages.getString("betterfuzz.http.table.header.uri"),
+        Constant.messages.getString("betterfuzz.http.table.header.status"),
+        Constant.messages.getString("betterfuzz.http.table.header.reason"),
+        Constant.messages.getString("betterfuzz.http.table.header.rtt"),
+        Constant.messages.getString("betterfuzz.http.table.header.size"),
+        Constant.messages.getString("betterfuzz.http.table.header.state"),
+        Constant.messages.getString("betterfuzz.http.table.header.fuzz")
     };
     
-    private static final String STATE_ERROR_LABEL = Constant.messages.getString("fuzz.http.table.field.state.error");
-    private static final String STATE_REFLECTED_LABEL = Constant.messages.getString("fuzz.http.table.field.state.reflected");
-    private static final String STATE_ANTI_CSRF_TOKEN_REQUEST_LABEL = Constant.messages.getString("fuzz.http.table.field.state.antiCsrfTokenRequest");
-    private static final String STATE_SUCCESSFUL_LABEL = Constant.messages.getString("fuzz.http.table.field.state.successful");
+    private static final String STATE_ERROR_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.error");
+    private static final String STATE_REFLECTED_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.reflected");
+    private static final String STATE_ANTI_CSRF_TOKEN_REQUEST_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.antiCsrfTokenRequest");
+    private static final String STATE_SUCCESSFUL_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.successful");
     
     private static final int COLUMN_COUNT = COLUMN_NAMES.length;
     

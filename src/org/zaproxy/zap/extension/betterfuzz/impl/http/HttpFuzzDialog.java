@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz.impl.http;
+package org.zaproxy.zap.extension.betterfuzz.impl.http;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,10 +31,10 @@ import org.parosproxy.paros.control.Control;
 import org.parosproxy.paros.network.HttpMessage;
 import org.zaproxy.zap.extension.anticsrf.AntiCsrfToken;
 import org.zaproxy.zap.extension.anticsrf.ExtensionAntiCSRF;
-import org.zaproxy.zap.extension.fuzz.ExtensionBetterFuzz;
-import org.zaproxy.zap.extension.fuzz.FuzzDialog;
-import org.zaproxy.zap.extension.fuzz.FuzzProcessFactory;
-import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
+import org.zaproxy.zap.extension.betterfuzz.ExtensionBetterFuzz;
+import org.zaproxy.zap.extension.betterfuzz.FuzzDialog;
+import org.zaproxy.zap.extension.betterfuzz.FuzzProcessFactory;
+import org.zaproxy.zap.extension.betterfuzz.FuzzableComponent;
 import org.zaproxy.zap.extension.httppanel.view.FuzzableMessage;
 
 public class HttpFuzzDialog extends FuzzDialog {
@@ -85,22 +85,22 @@ public class HttpFuzzDialog extends FuzzDialog {
     protected int addCustomComponents(JPanel panel, int row) {
         int currentRow = row;
         if (incAcsrfToken) {
-            panel.add(new JLabel(Constant.messages.getString("fuzz.label.anticsrf")), getGBC(0, currentRow, 3, 1.0D));
+            panel.add(new JLabel(Constant.messages.getString("betterfuzz.label.anticsrf")), getGBC(0, currentRow, 3, 1.0D));
             panel.add(getEnableTokens(), getGBC(1, currentRow, 1, 0.0D));
             currentRow++;
             panel.add(getTokensPane(), getGBC(0, currentRow, 4, 1.0D, 0.0D));
             currentRow++;
             
-            panel.add(new JLabel(Constant.messages.getString("fuzz.label.showtokens")), getGBC(0, currentRow, 3, 1.0D));
+            panel.add(new JLabel(Constant.messages.getString("betterfuzz.label.showtokens")), getGBC(0, currentRow, 3, 1.0D));
             panel.add(getShowTokenRequests(), getGBC(1, currentRow, 1, 0.0D));
             currentRow++;
             
         }
-        panel.add(new JLabel(Constant.messages.getString("fuzz.label.followredirects")), getGBC(0, currentRow, 3, 1.0D));
+        panel.add(new JLabel(Constant.messages.getString("betterfuzz.label.followredirects")), getGBC(0, currentRow, 3, 1.0D));
         panel.add(getFollowRedirects(), getGBC(1, currentRow, 1, 0.0D));
         currentRow++;
 
-        panel.add(new JLabel(Constant.messages.getString("fuzz.label.urlencode")), getGBC(0, currentRow, 3, 1.0D));
+        panel.add(new JLabel(Constant.messages.getString("betterfuzz.label.urlencode")), getGBC(0, currentRow, 3, 1.0D));
         panel.add(getUrlEncode(), getGBC(1, currentRow, 1, 0.0D));
         currentRow++;
         

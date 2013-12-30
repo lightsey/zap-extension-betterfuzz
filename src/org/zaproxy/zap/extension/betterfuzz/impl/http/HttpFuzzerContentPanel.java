@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zaproxy.zap.extension.fuzz.impl.http;
+package org.zaproxy.zap.extension.betterfuzz.impl.http;
 
 import java.awt.EventQueue;
 import java.sql.SQLException;
@@ -36,8 +36,8 @@ import org.parosproxy.paros.model.Model;
 import org.parosproxy.paros.network.HttpMalformedHeaderException;
 import org.parosproxy.paros.network.HttpMessage;
 import org.parosproxy.paros.view.View;
-import org.zaproxy.zap.extension.fuzz.FuzzResult;
-import org.zaproxy.zap.extension.fuzz.FuzzerContentPanel;
+import org.zaproxy.zap.extension.betterfuzz.FuzzResult;
+import org.zaproxy.zap.extension.betterfuzz.FuzzerContentPanel;
 import org.zaproxy.zap.extension.httppanel.HttpPanel;
 import org.zaproxy.zap.extension.search.ExtensionSearch;
 import org.zaproxy.zap.extension.search.SearchMatch;

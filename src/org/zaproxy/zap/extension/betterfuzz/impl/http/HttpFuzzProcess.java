@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz.impl.http;
+package org.zaproxy.zap.extension.betterfuzz.impl.http;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,9 +28,9 @@ import org.parosproxy.paros.network.HttpMessage;
 import org.parosproxy.paros.network.HttpSender;
 import org.zaproxy.zap.extension.anticsrf.AntiCsrfToken;
 import org.zaproxy.zap.extension.anticsrf.ExtensionAntiCSRF;
-import org.zaproxy.zap.extension.fuzz.AbstractFuzzProcess;
-import org.zaproxy.zap.extension.fuzz.FuzzResult;
-import org.zaproxy.zap.extension.fuzz.FuzzResult.State;
+import org.zaproxy.zap.extension.betterfuzz.AbstractFuzzProcess;
+import org.zaproxy.zap.extension.betterfuzz.FuzzResult;
+import org.zaproxy.zap.extension.betterfuzz.FuzzResult.State;
 import org.zaproxy.zap.extension.httppanel.view.FuzzableMessage;
 
 public class HttpFuzzProcess extends AbstractFuzzProcess {

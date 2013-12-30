@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz.impl.http;
+package org.zaproxy.zap.extension.betterfuzz.impl.http;
 
 import org.parosproxy.paros.control.Control;
 import org.parosproxy.paros.extension.encoder.Encoder;
@@ -23,8 +23,8 @@ import org.parosproxy.paros.model.Model;
 import org.parosproxy.paros.network.HttpSender;
 import org.zaproxy.zap.extension.anticsrf.AntiCsrfToken;
 import org.zaproxy.zap.extension.anticsrf.ExtensionAntiCSRF;
-import org.zaproxy.zap.extension.fuzz.FuzzProcess;
-import org.zaproxy.zap.extension.fuzz.FuzzProcessFactory;
+import org.zaproxy.zap.extension.betterfuzz.FuzzProcess;
+import org.zaproxy.zap.extension.betterfuzz.FuzzProcessFactory;
 import org.zaproxy.zap.extension.httppanel.view.FuzzableMessage;
 
 public class HttpFuzzProcessFactory implements FuzzProcessFactory {

@@ -15,12 +15,12 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz.impl.http;
+package org.zaproxy.zap.extension.betterfuzz.impl.http;
 
 import java.util.List;
 
 import org.parosproxy.paros.network.HttpMessage;
-import org.zaproxy.zap.extension.fuzz.FuzzResult;
+import org.zaproxy.zap.extension.betterfuzz.FuzzResult;
 
 public class HttpFuzzResult extends FuzzResult {
 

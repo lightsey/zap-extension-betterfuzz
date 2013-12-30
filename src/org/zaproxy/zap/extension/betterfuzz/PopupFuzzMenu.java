@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz;
+package org.zaproxy.zap.extension.betterfuzz;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -58,7 +58,7 @@ public class PopupFuzzMenu extends ExtensionPopupMenuItem {
 	 * This method initializes this
 	 */
 	private void initialize() {
-        this.setText(Constant.messages.getString("fuzz.tools.menu.fuzz"));
+        this.setText(Constant.messages.getString("betterfuzz.tools.menu.fuzz"));
 	}
 
 	@Override

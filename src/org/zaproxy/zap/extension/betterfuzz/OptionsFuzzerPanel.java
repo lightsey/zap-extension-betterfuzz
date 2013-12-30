@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz;
+package org.zaproxy.zap.extension.betterfuzz;
 
 import java.awt.CardLayout;
 import java.awt.GridBagConstraints;
@@ -63,7 +63,7 @@ public class OptionsFuzzerPanel extends AbstractParamPanel {
 	 */
 	private void initialize() {
         this.setLayout(new CardLayout());
-        this.setName(Constant.messages.getString("fuzz.options.title"));
+        this.setName(Constant.messages.getString("betterfuzz.options.title"));
         this.setSize(314, 245);
         this.add(getPanelPortScan(), getPanelPortScan().getName());
 	}
@@ -92,10 +92,10 @@ public class OptionsFuzzerPanel extends AbstractParamPanel {
 			panelPortScan.setLayout(new GridBagLayout());
 			panelPortScan.setSize(114, 132);
 			panelPortScan.setName("");
-			jLabel0.setText(Constant.messages.getString("fuzz.options.label.category"));
-			jLabel1.setText(Constant.messages.getString("fuzz.options.label.threads"));
+			jLabel0.setText(Constant.messages.getString("betterfuzz.options.label.category"));
+			jLabel1.setText(Constant.messages.getString("betterfuzz.options.label.threads"));
 			jLabel2.setText("");
-			jLabel3.setText(Constant.messages.getString("fuzz.options.label.addfile"));
+			jLabel3.setText(Constant.messages.getString("betterfuzz.options.label.addfile"));
 			
 			gridBagConstraints10.gridx = 0;
 			gridBagConstraints10.gridy = 0;
@@ -195,7 +195,7 @@ public class OptionsFuzzerPanel extends AbstractParamPanel {
 			categoryField.addItem(category);
 		}
 		
-		categoryField.addItem(Constant.messages.getString("fuzz.category.custom"));
+		categoryField.addItem(Constant.messages.getString("betterfuzz.category.custom"));
 	}
 	
 	void updateFuzzCategories() {
@@ -249,7 +249,7 @@ public class OptionsFuzzerPanel extends AbstractParamPanel {
 
 	private JButton getAddFileButton() {
 		if (addFileButton == null) {
-	        addFileButton = new JButton(Constant.messages.getString("fuzz.options.button.addfile")); 
+	        addFileButton = new JButton(Constant.messages.getString("betterfuzz.options.button.addfile")); 
 			addFileButton.addActionListener(new java.awt.event.ActionListener() { 
 				@Override
 				public void actionPerformed(java.awt.event.ActionEvent e) {    
@@ -257,7 +257,7 @@ public class OptionsFuzzerPanel extends AbstractParamPanel {
 					fcCommand.setFileFilter( new FileFilter() {
 						@Override
 						public String getDescription() {
-							return Constant.messages.getString("fuzz.options.title");
+							return Constant.messages.getString("betterfuzz.options.title");
 						}
 						@Override
 						public boolean accept(File f) {
@@ -282,7 +282,7 @@ public class OptionsFuzzerPanel extends AbstractParamPanel {
 						    copyFile = confirmOverwrite();
 						} else if (!newFile.getParentFile().canWrite()) {
 							View.getSingleton().showWarningDialog(
-									Constant.messages.getString("fuzz.add.dirperms.error")
+									Constant.messages.getString("betterfuzz.add.dirperms.error")
 											+ newFile.getParentFile().getAbsolutePath());
 
 						} else {
@@ -300,13 +300,13 @@ public class OptionsFuzzerPanel extends AbstractParamPanel {
                 private boolean confirmOverwrite() {
                     int option = JOptionPane.showOptionDialog(
                             View.getSingleton().getMainFrame(),
-                            Constant.messages.getString("fuzz.add.duplicate.error"),
-                            Constant.messages.getString("fuzz.add.duplicate.error.title"),
+                            Constant.messages.getString("betterfuzz.add.duplicate.error"),
+                            Constant.messages.getString("betterfuzz.add.duplicate.error.title"),
                             JOptionPane.OK_CANCEL_OPTION,
                             JOptionPane.QUESTION_MESSAGE,
                             null,
                             new String[] {
-                                    Constant.messages.getString("fuzz.add.duplicate.error.button.confirm"),
+                                    Constant.messages.getString("betterfuzz.add.duplicate.error.button.confirm"),
                                     Constant.messages.getString("all.button.cancel") },
                             null);
 
@@ -317,10 +317,10 @@ public class OptionsFuzzerPanel extends AbstractParamPanel {
                     final FileCopier copier = new FileCopier();
                     try {
                         copier.copy(source, dest);
-                        View.getSingleton().showMessageDialog(Constant.messages.getString("fuzz.add.ok"));
+                        View.getSingleton().showMessageDialog(Constant.messages.getString("betterfuzz.add.ok"));
                     } catch (IOException e) {
                         View.getSingleton().showWarningDialog(
-                                Constant.messages.getString("fuzz.add.fail.error") + e.getMessage());
+                                Constant.messages.getString("betterfuzz.add.fail.error") + e.getMessage());
                     }
                 }
 			});

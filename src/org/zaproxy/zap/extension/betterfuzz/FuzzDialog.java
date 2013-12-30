@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz;
+package org.zaproxy.zap.extension.betterfuzz;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -77,7 +77,7 @@ public abstract class FuzzDialog extends AbstractDialog {
     public FuzzDialog(ExtensionBetterFuzz extension, String fuzzTarget) throws HeadlessException {
         super(View.getSingleton().getMainFrame(), true);
         
-        this.setTitle(Constant.messages.getString("fuzz.title"));
+        this.setTitle(Constant.messages.getString("betterfuzz.title"));
         
         this.extension = extension;
         setSelection(fuzzTarget);
@@ -112,11 +112,11 @@ public abstract class FuzzDialog extends AbstractDialog {
 			
 			currentRow = addCustomComponents(jPanel, currentRow);
 			
-			jPanel.add(new JLabel(Constant.messages.getString("fuzz.label.category")), getGBC(0, currentRow, 1, 0.25D));
+			jPanel.add(new JLabel(Constant.messages.getString("betterfuzz.label.category")), getGBC(0, currentRow, 1, 0.25D));
 			jPanel.add(getCategoryField(), getGBC(1, currentRow, 3, 0.75D));
 			currentRow++;
 
-			jPanel.add(new JLabel(Constant.messages.getString("fuzz.label.fuzzer")), getGBC(0, currentRow, 1, 0.25D));
+			jPanel.add(new JLabel(Constant.messages.getString("betterfuzz.label.fuzzer")), getGBC(0, currentRow, 1, 0.25D));
 			jPanel.add(new JScrollPane(getFuzzersField()), getGBC(1, currentRow, 3, 1.0D, 0.75D));
 			currentRow++;
 			
@@ -174,7 +174,7 @@ public abstract class FuzzDialog extends AbstractDialog {
     }
 	
 	private boolean isCustomCategory() {
-		return Constant.messages.getString("fuzz.category.custom").equals(getCategoryField().getSelectedItem());
+		return Constant.messages.getString("betterfuzz.category.custom").equals(getCategoryField().getSelectedItem());
 	}
 	
 	private boolean isJBroFuzzCategory() {
@@ -196,7 +196,7 @@ public abstract class FuzzDialog extends AbstractDialog {
 			}
 
 			// Custom category
-			categoryField.addItem(Constant.messages.getString("fuzz.category.custom"));
+			categoryField.addItem(Constant.messages.getString("betterfuzz.category.custom"));
 			
 			categoryField.addActionListener(new ActionListener() {
 				@Override
@@ -274,10 +274,10 @@ public abstract class FuzzDialog extends AbstractDialog {
         if (length == 0) {
             getSelectionField().setText("");
             getFuzzTargetLabel().setText("");
-            getFuzzDescriptionLabel().setText(Constant.messages.getString("fuzz.label.insertFuzzStrings"));
+            getFuzzDescriptionLabel().setText(Constant.messages.getString("betterfuzz.label.insertFuzzStrings"));
         } else {
             getFuzzDescriptionLabel().setText("");
-            getFuzzTargetLabel().setText(Constant.messages.getString("fuzz.label.selection"));
+            getFuzzTargetLabel().setText(Constant.messages.getString("betterfuzz.label.selection"));
             if (length > selectionFieldLength) {
                 getSelectionField().setText(fuzzTarget.substring(0, selectionFieldLength) + "...");
             } else {
@@ -296,7 +296,7 @@ public abstract class FuzzDialog extends AbstractDialog {
         private static final long serialVersionUID = -961522394390805325L;
 
         public StartFuzzAction() {
-            super(Constant.messages.getString("fuzz.button.start"));
+            super(Constant.messages.getString("betterfuzz.button.start"));
             setEnabled(false);
         }
         
@@ -341,7 +341,7 @@ public abstract class FuzzDialog extends AbstractDialog {
         private static final long serialVersionUID = -6716179197963523133L;
 
         public CancelFuzzAction() {
-            super(Constant.messages.getString("fuzz.button.cancel"));
+            super(Constant.messages.getString("betterfuzz.button.cancel"));
         }
         
         @Override

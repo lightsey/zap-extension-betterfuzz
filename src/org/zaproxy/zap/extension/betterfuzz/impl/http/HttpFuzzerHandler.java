@@ -15,17 +15,17 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz.impl.http;
+package org.zaproxy.zap.extension.betterfuzz.impl.http;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 import org.parosproxy.paros.control.Control;
 import org.parosproxy.paros.view.View;
-import org.zaproxy.zap.extension.fuzz.ExtensionBetterFuzz;
-import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
-import org.zaproxy.zap.extension.fuzz.FuzzerContentPanel;
-import org.zaproxy.zap.extension.fuzz.FuzzerHandler;
+import org.zaproxy.zap.extension.betterfuzz.ExtensionBetterFuzz;
+import org.zaproxy.zap.extension.betterfuzz.FuzzableComponent;
+import org.zaproxy.zap.extension.betterfuzz.FuzzerContentPanel;
+import org.zaproxy.zap.extension.betterfuzz.FuzzerHandler;
 import org.zaproxy.zap.extension.search.SearchResult;
 
 public class HttpFuzzerHandler implements FuzzerHandler {

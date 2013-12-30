@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
  */
-package org.zaproxy.zap.extension.fuzz.impl.http;
+package org.zaproxy.zap.extension.betterfuzz.impl.http;
 
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -79,16 +79,16 @@ public class HttpFuzzerDialogTokenPane {
 
 		enableCheck.setSelected(enable);
 
-		pane2.add(new JLabel(Constant.messages.getString("fuzz.acsrf.label.name")), getGBC(0, 1, 1, 0.25D));
+		pane2.add(new JLabel(Constant.messages.getString("betterfuzz.acsrf.label.name")), getGBC(0, 1, 1, 0.25D));
 		pane2.add(this.tokenName, getGBC(1, 1, 1, 0.75D));
 
-		pane2.add(new JLabel(Constant.messages.getString("fuzz.acsrf.label.source")), getGBC(0, 2, 1, 0.25D));
+		pane2.add(new JLabel(Constant.messages.getString("betterfuzz.acsrf.label.source")), getGBC(0, 2, 1, 0.25D));
 		pane2.add(this.sourceURL, getGBC(1, 2, 1, 0.75D));
 
-		pane2.add(new JLabel(Constant.messages.getString("fuzz.acsrf.label.target")), getGBC(0, 3, 1, 0.25D));
+		pane2.add(new JLabel(Constant.messages.getString("betterfuzz.acsrf.label.target")), getGBC(0, 3, 1, 0.25D));
 		pane2.add(this.targetURL, getGBC(1, 3, 1, 0.75D));
 
-		pane2.add(new JLabel(Constant.messages.getString("fuzz.acsrf.label.prev")), getGBC(0, 4, 1, 0.25D));
+		pane2.add(new JLabel(Constant.messages.getString("betterfuzz.acsrf.label.prev")), getGBC(0, 4, 1, 0.25D));
 		pane2.add(this.prevValue, getGBC(1, 4, 1, 0.75D));
 
 		pane.setViewportView(pane2);

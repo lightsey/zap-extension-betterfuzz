@@ -1,23 +1,26 @@
 /*
  * Zed Attack Proxy (ZAP) and its related class files.
- * 
+ *
  * ZAP is an HTTP/HTTPS proxy for assessing web application security.
- * 
+ *
  * Copyright 2010 psiinon@gmail.com
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at 
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0 
- *   
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS, 
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- * See the License for the specific language governing permissions and 
- * limitations under the License. 
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This modified version of the standard ZAP Fuzz extension
+ * copyright 2013-2014 John Lightsey <john@nixnuts.net>
  */
-package org.zaproxy.zap.extension.fuzz;
+package org.zaproxy.zap.extension.betterfuzz;
 
 import java.awt.Component;
 import java.io.File;
@@ -44,7 +47,7 @@ import org.parosproxy.paros.extension.SessionChangedListener;
 import org.parosproxy.paros.model.Session;
 import org.parosproxy.paros.network.HttpMessage;
 import org.zaproxy.zap.extension.AddonFilesChangedListener;
-import org.zaproxy.zap.extension.fuzz.impl.http.HttpFuzzerHandler;
+import org.zaproxy.zap.extension.betterfuzz.impl.http.HttpFuzzerHandler;
 import org.zaproxy.zap.extension.help.ExtensionHelp;
 import org.zaproxy.zap.extension.httppanel.Message;
 import org.zaproxy.zap.extension.search.SearchResult;
@@ -53,7 +56,7 @@ public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChan
 
 	public static final String NAME = "ExtensionBetterFuzz";
 	public static final String JBROFUZZ_CATEGORY_PREFIX = "jbrofuzz / ";
-	
+    
     private PopupFuzzMenu popupFuzzMenu = null;
     private FuzzerThread fuzzerThread = null;
     private FuzzerParam fuzzerParam = null;
@@ -199,7 +202,7 @@ public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChan
     private PopupFuzzMenu getPopupMenuFuzz() {
         if (popupFuzzMenu== null) {
             popupFuzzMenu = new PopupFuzzMenu(this);
-            popupFuzzMenu.setText(Constant.messages.getString("fuzz.tools.menu.fuzz"));
+            popupFuzzMenu.setText(Constant.messages.getString("betterfuzz.tools.menu.fuzz"));
             popupFuzzMenu.addActionListener(new java.awt.event.ActionListener() {
                 @Override
                 public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -345,7 +348,7 @@ public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChan
 
 	@Override
 	public String getDescription() {
-		return Constant.messages.getString("fuzz.desc");
+		return Constant.messages.getString("betterfuzz.desc");
 	}
 
 	@Override
