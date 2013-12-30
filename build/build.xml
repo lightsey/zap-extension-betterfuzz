@@ -104,18 +104,18 @@
 		</jar>
 		<delete file="${addon.libs.zip}" />
 		
-		<antcall target="cleanup-extension-help"> 
+		<antcall target="cleanup-extension-help">
 			<param name="extension" value="${addon}"/>
 		</antcall>
 
-		<antcall target="append-to-versions-file"> 
-			<param name="extension" value="${addon}"/> 
-			<param name="name" value="${zapaddon.name}"/> 
-			<param name="version" value="${zapaddon.version}"/> 
-			<param name="description" value="${zapaddon.description}"/> 
-			<param name="author" value="${zapaddon.author}"/> 
-			<param name="url" value="${zapaddon.url}"/> 
-			<param name="changes" value="${zapaddon.changes}"/> 
+		<antcall target="append-to-versions-file">
+			<param name="extension" value="${addon}"/>
+			<param name="name" value="${zapaddon.name}"/>
+			<param name="version" value="${zapaddon.version}"/>
+			<param name="description" value="${zapaddon.description}"/>
+			<param name="author" value="${zapaddon.author}"/>
+			<param name="url" value="${zapaddon.url}"/>
+			<param name="changes" value="${zapaddon.changes}"/>
 			<param name="file" value="${file}"/> 
 			<param name="not-before-version" value="${zapaddon.not-before-version}"/> 
 			<param name="not-from-version" value="${zapaddon.not-from-version}"/> 
@@ -124,8 +124,7 @@
 	
 	<target name="build-extension" description="build the specified extension">
 		<property name="file" value="${extension}-${type}-${version}.zap" />
-		
-		<antcall target="build-extension-help"> 
+		<antcall target="build-extension-help">
 			<param name="extension" value="${extension}"/>
 		</antcall>
 
@@ -166,13 +165,10 @@
 	    -->
 		<local name="help.jar" />
         <property name="help.jar" value="help.jar" />
-        
         <local name="help.package" />
 	    <property name="help.package" value="org/zaproxy/zap/extension/${extension}/resource/help" />
-		
         <local name="help.target" />
         <property name="help.target" value="${build}/${help.package}/" />
-        
         <!-- generate the indexes -->
         <java classname="com.sun.java.help.search.Indexer" fork="true" dir="${src}/${help.package}">
             <arg value="zaphelp"/>
@@ -180,97 +176,32 @@
                 <pathelement location="${dist.lib.dir}/jhall.jar" />
             </classpath>
         </java>
-        
         <!-- delete the previous jar in the help directory (if present) -->
         <delete dir="${build}/${help.package}" />
         <mkdir dir="${build}/${help.package}" />
 
         <!-- as files reside in resource/ they are copied later -->
     </target>
-    
 	<target name="is-help-available">
 	    <available property="help.available" type="dir" file="${src}/org/zaproxy/zap/extension/${extension}/resource/help"/>
 	</target>
-	
 	<target name="cleanup-extension-help">
         <!-- delete the indexes, generated previously, as they are no longer needed. -->
         <delete dir="${src}/org/zaproxy/zap/extension/${extension}/resource/help/JavaHelpSearch" />
 	</target>
-	
-	<target name="build-exampleActiveScan" description="build the exampleActiveScan extension">
-		<antcall target="build-extension"> 
-			<param name="extension" value="exampleActiveScan"/> 
+	<target name="build-fuzz" description="build the fuzz extension">
+		<antcall target="build-extension">
+			<param name="extension" value="fuzz"/> 
 			<param name="type" value="example"/> 
 			<param name="version" value="1"/> 
 			<param name="name" value="Example active scan rule"/> 
 			<param name="changes" value=""/> 
 		</antcall>
-	</target>
-
-	<target name="build-examplePassiveScan" description="build the examplePassiveScan extension">
-		<antcall target="build-extension"> 
-			<param name="extension" value="examplePassiveScan"/> 
-			<param name="type" value="example"/> 
-			<param name="version" value="1"/> 
-			<param name="name" value="Example passive scan rule"/> 
-			<param name="changes" value=""/> 
-		</antcall>
-	</target>
-
-	<target name="build-exampleRightClickMsg" description="build the exampleRightClickMsg extension">
-		<antcall target="build-extension"> 
-			<param name="extension" value="exampleRightClickMsg"/> 
-			<param name="type" value="example"/> 
-			<param name="version" value="1"/> 
-			<param name="name" value="Example extension demonstrating right-click message menu"/> 
-			<param name="changes" value=""/> 
-		</antcall>
-	</target>
-
-	<target name="build-exampleTopMenu" description="build the exampleTopMenu extension">
-		<antcall target="build-extension"> 
-			<param name="extension" value="exampleTopMenu"/> 
-			<param name="type" value="example"/> 
-			<param name="version" value="1"/> 
-			<param name="name" value="Example extension demonstrating to top level menu"/> 
-			<param name="changes" value=""/> 
-		</antcall>
-	</target>
-	
-	<target name="build-fuzzdb" description="build the fuzzdb addon">
-		<antcall target="build-addon"><param name="addon" value="fuzzdb"/></antcall>
-	
-		<!-- Add the fuzzdb files in the right place -->
-		<property name="addon" value="fuzzdb" /> <!-- Set this to make cut-n-pasting safer ;) -->
-		<xmlproperty file="${src}/org/zaproxy/zap/extension/${addon}/ZapAddOn.xml"/>
-		<property name="file" value="${addon}-${status}-${zapaddon.version}.zap" />
-		<jar jarfile="${dist}/${file}" update="true" compress="true">
-			<zipfileset dir="${src}/org/zaproxy/zap/extension/${addon}/files/" prefix="fuzzers/fuzzdb-1.09/"/>
-		</jar>
-	</target>
-
-
+    </target>
 	<target name="build-all" depends="clean,compile" description="build all of the extensions">
 		<delete file="${versions.file}"/>
-		
 		<echo file="${versions.file}" append="true">&lt;ZAP></echo>
-		
-		<!-- 'Standard' addons (keep in alphabetical order ;) -->
-		<antcall target="build-addon"><param name="addon" value="ascanrules"/></antcall>
-		<!--antcall target="build-addon"><param name="addon" value="bruteforce"/></antcall-->
-		<antcall target="build-addon"><param name="addon" value="pscanrules"/></antcall>
-		<antcall target="build-addon"><param name="addon" value="quickstart"/></antcall>
-		<antcall target="build-addon"><param name="addon" value="websocket"/></antcall>
-
-		<!-- 'Non-Standard' addons, ie which require additional files (keep in alphabetical order ;) -->
-		<antcall target="build-fuzzdb"/>
-		
-		<!-- Examples, which havnt been made into addons yet -->
-		<antcall target="build-exampleActiveScan"/>
-		<antcall target="build-examplePassiveScan"/>
-		<antcall target="build-exampleRightClickMsg"/>
-		<antcall target="build-exampleTopMenu"/>
-
+		<antcall target="build-fuzz"/>
 		<echo file="${versions.file}" append="true">&lt;/ZAP></echo>
 	</target>
 
@@ -283,77 +214,11 @@
 		<!--copy file="${dist}/${extension}.jar" toDir="${zap.plugin.dir}" overwrite="true" /-->
 	</target>
 
-	<target name="deploy-ascanrules" description="deploy the active scan rules">
-		<antcall target="deploy-extension"> <param name="extension" value="ascanrules"/> </antcall>
-	</target>
-
 	<target name="deploy-exampleActiveScan" description="deploy the exampleActiveScan extension">
 		<antcall target="deploy-extension"> <param name="extension" value="exampleActiveScan"/> </antcall>
 	</target>
-
-	<target name="deploy-examplePassiveScan" description="deploy the examplePassiveScan extension">
-		<antcall target="deploy-extension"> <param name="extension" value="examplePassiveScan"/> </antcall>
-	</target>
-
-	<target name="deploy-exampleRightClickMsg" description="deploy the exampleRightClickMsg extension">
-		<antcall target="deploy-extension"> <param name="extension" value="exampleRightClickMsg"/> </antcall>
-	</target>
-
-	<target name="deploy-exampleTopMenu" description="deploy the exampleTopMenu extension">
-		<antcall target="deploy-extension"> <param name="extension" value="exampleTopMenu"/> </antcall>
-	</target>
-
-	<target name="deploy-pscanrules" description="deploy the passive scan rules">
-		<antcall target="deploy-extension"> <param name="extension" value="pscanrules"/> </antcall>
-	</target>
-
-	<target name="deploy-quickstart" description="deploy the quick start extension" depends="build-all">
-		<antcall target="deploy-extension"> <param name="extension" value="quickstart"/> </antcall>
-	</target>
-	
-	<target name="deploy-websockets" description="deploy the WebSockets extension">
-		<antcall target="deploy-extension"> <param name="extension" value="websocket"/> </antcall>
-	</target>
-	
 	<target name="deploy-all" depends="build-all" description="deploy all of the extensions">
 		<!-- Keep in alphabetical order ;) -->
-		<antcall target="deploy-ascanrules"/>
 		<antcall target="deploy-exampleActiveScan"/>
-		<antcall target="deploy-examplePassiveScan"/>
-		<antcall target="deploy-exampleRightClickMsg"/>
-		<antcall target="deploy-exampleTopMenu"/>
-		<antcall target="deploy-pscanrules"/>
-		<antcall target="deploy-quickstart"/>
-		<antcall target="deploy-websockets"/>
 	</target>
-
-	<target name="deploy-weekly" description="deploy all of the extension to be included in a weekly release">
-		<!-- Set to compile with debug information -->
-		<property name="javac.debug" value="true" />
-		<antcall target="build-all" />
-		<copy todir="${zap.plugin.dir}">
-			<fileset dir="${dist}">
-				<include name="ascanrules-${status}-*.zap"/>
-				<include name="pscanrules-${status}-*.zap"/>
-				<include name="quickstart-${status}-*.zap"/>
-				<include name="websocket-${status}-*.zap"/>
-			</fileset>
-		</copy>
-	</target>
-
-
-	<target name="deploy-release" description="deploy all of the extension to be included in a full release">
-		<!-- Set to compile with debug information -->
-		<property name="javac.debug" value="true" />
-		<antcall target="build-all" />
-		<copy todir="${zap.plugin.dir}">
-			<fileset dir="${dist}">
-				<include name="ascanrules-${status}-*.zap"/>
-				<include name="pscanrules-${status}-*.zap"/>
-				<include name="quickstart-${status}-*.zap"/>
-				<include name="websocket-${status}-*.zap"/>
-			</fileset>
-		</copy>
-	</target>
-
 </project>

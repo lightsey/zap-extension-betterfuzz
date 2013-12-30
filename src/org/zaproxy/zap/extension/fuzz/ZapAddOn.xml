@@ -1,0 +1,20 @@
+<zapaddon>
+	<name>BetterFuzz</name>
+	<version>1</version>
+	<description>Longer test description (no HTML), but not too long!</description>
+	<author>John Lightsey</author>
+	<url>http://TODO.TODO/</url>
+	<changes/>
+	<dependson/>
+	<extensions>
+      <extension>org.zaproxy.zap.extension.ExtensionFuzz</extension>
+	</extensions>
+	<ascanrules/>
+	<pscanrules/>
+	<filters/>
+	<files>
+		<file/>
+	</files>
+	<not-before-version/>
+	<not-from-version/>
+</zapaddon>
