@@ -189,9 +189,9 @@
         <!-- delete the indexes, generated previously, as they are no longer needed. -->
         <delete dir="${src}/org/zaproxy/zap/extension/${extension}/resource/help/JavaHelpSearch" />
 	</target>
-	<target name="build-fuzz" description="build the fuzz extension">
+	<target name="build-betterfuzz" description="build the betterfuzz extension">
 		<antcall target="build-extension">
-			<param name="extension" value="fuzz"/> 
+			<param name="extension" value="betterfuzz"/> 
 			<param name="type" value="example"/> 
 			<param name="version" value="1"/> 
 			<param name="name" value="Example active scan rule"/> 
@@ -201,7 +201,7 @@
 	<target name="build-all" depends="clean,compile" description="build all of the extensions">
 		<delete file="${versions.file}"/>
 		<echo file="${versions.file}" append="true">&lt;ZAP></echo>
-		<antcall target="build-fuzz"/>
+		<antcall target="build-betterfuzz"/>
 		<echo file="${versions.file}" append="true">&lt;/ZAP></echo>
 	</target>
 
