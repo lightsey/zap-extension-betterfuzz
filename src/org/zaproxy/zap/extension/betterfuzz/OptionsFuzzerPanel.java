@@ -46,13 +46,13 @@ import org.zaproxy.zap.view.PositiveValuesSlider;
 public class OptionsFuzzerPanel extends AbstractParamPanel {
 
 	private static final long serialVersionUID = 1L;
-	private ExtensionFuzz extension = null;
+	private ExtensionBetterFuzz extension = null;
 	private JPanel panelPortScan = null;
 	private JSlider sliderThreadsPerScan = null;
 	private JComboBox<String> categoryField = null;
 	private JButton addFileButton = null;
 
-    public OptionsFuzzerPanel(ExtensionFuzz extension) {
+    public OptionsFuzzerPanel(ExtensionBetterFuzz extension) {
         super();
 		this.extension = extension;
  		initialize();

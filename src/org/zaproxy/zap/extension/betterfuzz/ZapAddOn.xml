@@ -7,7 +7,7 @@
 	<changes/>
 	<dependson/>
 	<extensions>
-      <extension>org.zaproxy.zap.extension.ExtensionFuzz</extension>
+      <extension>org.zaproxy.zap.extension.ExtensionBetterFuzz</extension>
 	</extensions>
 	<ascanrules/>
 	<pscanrules/>

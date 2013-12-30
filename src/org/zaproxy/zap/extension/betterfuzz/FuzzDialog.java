@@ -66,7 +66,7 @@ public abstract class FuzzDialog extends AbstractDialog {
     private JButton cancelButton = null;
     private JButton startButton = null;
     
-    private ExtensionFuzz extension;
+    private ExtensionBetterFuzz extension;
     
     /**
      * 
@@ -74,7 +74,7 @@ public abstract class FuzzDialog extends AbstractDialog {
      * @param fuzzTarget
      * @throws HeadlessException
      */
-    public FuzzDialog(ExtensionFuzz extension, String fuzzTarget) throws HeadlessException {
+    public FuzzDialog(ExtensionBetterFuzz extension, String fuzzTarget) throws HeadlessException {
         super(View.getSingleton().getMainFrame(), true);
         
         this.setTitle(Constant.messages.getString("fuzz.title"));
@@ -178,7 +178,7 @@ public abstract class FuzzDialog extends AbstractDialog {
 	}
 	
 	private boolean isJBroFuzzCategory() {
-		return ((String)getCategoryField().getSelectedItem()).startsWith(ExtensionFuzz.JBROFUZZ_CATEGORY_PREFIX);
+		return ((String)getCategoryField().getSelectedItem()).startsWith(ExtensionBetterFuzz.JBROFUZZ_CATEGORY_PREFIX);
 	}
 	
 	private JComboBox<String> getCategoryField() {

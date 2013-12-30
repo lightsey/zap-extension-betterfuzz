@@ -31,7 +31,7 @@ import org.parosproxy.paros.control.Control;
 import org.parosproxy.paros.network.HttpMessage;
 import org.zaproxy.zap.extension.anticsrf.AntiCsrfToken;
 import org.zaproxy.zap.extension.anticsrf.ExtensionAntiCSRF;
-import org.zaproxy.zap.extension.fuzz.ExtensionFuzz;
+import org.zaproxy.zap.extension.fuzz.ExtensionBetterFuzz;
 import org.zaproxy.zap.extension.fuzz.FuzzDialog;
 import org.zaproxy.zap.extension.fuzz.FuzzProcessFactory;
 import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
@@ -54,7 +54,7 @@ public class HttpFuzzDialog extends FuzzDialog {
     
     private HttpFuzzerHandler handler;
 
-    public HttpFuzzDialog(HttpFuzzerHandler handler, ExtensionFuzz extension, FuzzableComponent fuzzableComponent) {
+    public HttpFuzzDialog(HttpFuzzerHandler handler, ExtensionBetterFuzz extension, FuzzableComponent fuzzableComponent) {
         super(extension, fuzzableComponent.getFuzzTarget());
         
         this.handler = handler;

@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 import org.parosproxy.paros.control.Control;
 import org.parosproxy.paros.view.View;
-import org.zaproxy.zap.extension.fuzz.ExtensionFuzz;
+import org.zaproxy.zap.extension.fuzz.ExtensionBetterFuzz;
 import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
 import org.zaproxy.zap.extension.fuzz.FuzzerContentPanel;
 import org.zaproxy.zap.extension.fuzz.FuzzerHandler;
@@ -55,7 +55,7 @@ public class HttpFuzzerHandler implements FuzzerHandler {
     }
     
     private HttpFuzzDialog getDialog(FuzzableComponent fuzzableComponent) {
-        ExtensionFuzz ext = (ExtensionFuzz) Control.getSingleton().getExtensionLoader().getExtension(ExtensionFuzz.NAME);
+        ExtensionBetterFuzz ext = (ExtensionBetterFuzz) Control.getSingleton().getExtensionLoader().getExtension(ExtensionBetterFuzz.NAME);
         return new HttpFuzzDialog(this, ext, fuzzableComponent);
     }
     

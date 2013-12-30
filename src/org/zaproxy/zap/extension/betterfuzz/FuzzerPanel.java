@@ -56,7 +56,7 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
 	
     private static final Logger logger = Logger.getLogger(FuzzerPanel.class);
 	
-	private ExtensionFuzz extension = null;
+	private ExtensionBetterFuzz extension = null;
 	private JPanel panelCommand = null;
 	private JToolBar panelToolbar = null;
 	private JScrollPane jScrollPane = null;
@@ -71,7 +71,7 @@ public class FuzzerPanel extends AbstractPanel implements FuzzerListener {
 
     private FuzzerContentPanel contentPanel;
     
-    public FuzzerPanel(ExtensionFuzz extension) {
+    public FuzzerPanel(ExtensionBetterFuzz extension) {
         super();
         this.extension = extension;
  		initialize();

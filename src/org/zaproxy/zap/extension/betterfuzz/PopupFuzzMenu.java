@@ -35,7 +35,7 @@ public class PopupFuzzMenu extends ExtensionPopupMenuItem {
 	private static final long serialVersionUID = 1L;
 	private Component lastInvoker = null;
     private JFrame parentFrame = null;
-    private ExtensionFuzz extension;
+    private ExtensionBetterFuzz extension;
     
 	/**
      * @return Returns the lastInvoker.
@@ -48,7 +48,7 @@ public class PopupFuzzMenu extends ExtensionPopupMenuItem {
 	 * This method initializes 
 	 * 
 	 */
-	public PopupFuzzMenu(ExtensionFuzz extension) {
+	public PopupFuzzMenu(ExtensionBetterFuzz extension) {
 		super();
 		initialize();
 		this.extension = extension;

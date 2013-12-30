@@ -49,9 +49,9 @@ import org.zaproxy.zap.extension.help.ExtensionHelp;
 import org.zaproxy.zap.extension.httppanel.Message;
 import org.zaproxy.zap.extension.search.SearchResult;
 
-public class ExtensionFuzz extends ExtensionAdaptor implements SessionChangedListener, AddonFilesChangedListener {
+public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChangedListener, AddonFilesChangedListener {
 
-	public static final String NAME = "ExtensionFuzz";
+	public static final String NAME = "ExtensionBetterFuzz";
 	public static final String JBROFUZZ_CATEGORY_PREFIX = "jbrofuzz / ";
 	
     private PopupFuzzMenu popupFuzzMenu = null;
@@ -70,7 +70,7 @@ public class ExtensionFuzz extends ExtensionAdaptor implements SessionChangedLis
 	/**
      * 
      */
-    public ExtensionFuzz() {
+    public ExtensionBetterFuzz() {
         super();
  		initialize();
     }
@@ -78,7 +78,7 @@ public class ExtensionFuzz extends ExtensionAdaptor implements SessionChangedLis
     /**
      * @param name
      */
-    public ExtensionFuzz(String name) {
+    public ExtensionBetterFuzz(String name) {
         super(name);
     }
 
@@ -324,7 +324,7 @@ public class ExtensionFuzz extends ExtensionAdaptor implements SessionChangedLis
 	}
 
 	public List <String> getJBroFuzzFuzzerNames(String category) {
-		String jbfCategory = category.substring(ExtensionFuzz.JBROFUZZ_CATEGORY_PREFIX.length());
+		String jbfCategory = category.substring(ExtensionBetterFuzz.JBROFUZZ_CATEGORY_PREFIX.length());
 		String [] fuzzers = getDB().getPrototypeNamesInCategory(jbfCategory);
 		Arrays.sort(fuzzers);
 		List <String> fuzzerNames = new ArrayList<>(fuzzers.length);
