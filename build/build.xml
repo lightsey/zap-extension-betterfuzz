@@ -192,7 +192,7 @@
 	<target name="build-betterfuzz" description="build the betterfuzz extension">
 		<antcall target="build-extension">
 			<param name="extension" value="betterfuzz"/> 
-			<param name="type" value="example"/> 
+			<param name="type" value="alpha"/> 
 			<param name="version" value="1"/> 
 			<param name="name" value="Example active scan rule"/> 
 			<param name="changes" value=""/> 
@@ -214,11 +214,11 @@
 		<!--copy file="${dist}/${extension}.jar" toDir="${zap.plugin.dir}" overwrite="true" /-->
 	</target>
 
-	<target name="deploy-exampleActiveScan" description="deploy the exampleActiveScan extension">
-		<antcall target="deploy-extension"> <param name="extension" value="exampleActiveScan"/> </antcall>
+	<target name="deploy-betterfuzz" description="deploy the betterfuzz extension">
+		<antcall target="deploy-extension"> <param name="extension" value="betterfuzz"/> </antcall>
 	</target>
 	<target name="deploy-all" depends="build-all" description="deploy all of the extensions">
 		<!-- Keep in alphabetical order ;) -->
-		<antcall target="deploy-exampleActiveScan"/>
+		<antcall target="deploy-betterfuzz"/>
 	</target>
 </project>
