@@ -49,7 +49,7 @@ public class HttpFuzzTableModel extends AbstractTableModel {
     };
     
     private static final String STATE_ERROR_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.error");
-    private static final String STATE_REFLECTED_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.reflected");
+    private static final String STATE_INJECTED_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.injected");
     private static final String STATE_ANTI_CSRF_TOKEN_REQUEST_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.antiCsrfTokenRequest");
     private static final String STATE_SUCCESSFUL_LABEL = Constant.messages.getString("betterfuzz.http.table.field.state.successful");
     
@@ -126,8 +126,8 @@ public class HttpFuzzTableModel extends AbstractTableModel {
             	status = STATE_ERROR_LABEL;
                 icon = new ImageIcon(HttpFuzzTableModel.class.getResource("/resource/icon/16/150.png"));
                 break;
-            case REFLECTED:
-            	status = STATE_REFLECTED_LABEL;
+            case INJECTED:
+            	status = STATE_INJECTED_LABEL;
                 icon = new ImageIcon(HttpFuzzTableModel.class.getResource("/resource/icon/16/099.png")); // Yellow fuzzy circle
                 break;
             case ANTI_CRSF_TOKEN:

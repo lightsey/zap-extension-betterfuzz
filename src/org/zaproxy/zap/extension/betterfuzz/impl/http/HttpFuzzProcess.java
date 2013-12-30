@@ -122,8 +122,8 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
         try {
             httpSender.sendAndReceive(msg);
             
-            if (isFuzzStringReflected(msg, fuzz)) {
-                fuzzResult.setState(State.REFLECTED);
+            if (isFuzzStringInjected(msg, fuzz)) {
+                fuzzResult.setState(State.INJECTED);
             }
         } catch (HttpException e) {
             logger.error(e.getMessage(), e);
@@ -138,7 +138,7 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
         return fuzzResult;
     }
     
-    private boolean isFuzzStringReflected(HttpMessage msg, String fuzzString) {
+    private boolean isFuzzStringInjected(HttpMessage msg, String fuzzString) {
         HttpMessage originalMessage = (HttpMessage)fuzzableHttpMessage.getMessage();
 
         final int pos = originalMessage.getResponseBody().toString().indexOf(fuzzString);

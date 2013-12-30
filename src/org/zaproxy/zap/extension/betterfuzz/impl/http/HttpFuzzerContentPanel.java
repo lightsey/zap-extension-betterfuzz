@@ -67,7 +67,7 @@ public class HttpFuzzerContentPanel implements FuzzerContentPanel {
 
     enum State {
         SUCCESSFUL,
-        REFLECTED,
+        INJECTED,
         ERROR,
         ANTI_CRSF_TOKEN,
     }
@@ -301,8 +301,8 @@ public class HttpFuzzerContentPanel implements FuzzerContentPanel {
     private State convertState(FuzzResult.State fuzzState) {
         State state;
         switch (fuzzState) {
-        case REFLECTED:
-            state = State.REFLECTED;
+        case INJECTED:
+            state = State.INJECTED;
             break;
         case ERROR:
             state = State.ERROR;
