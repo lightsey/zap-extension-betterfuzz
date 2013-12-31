@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 import org.parosproxy.paros.control.Control;
 import org.parosproxy.paros.view.View;
 import org.zaproxy.zap.extension.betterfuzz.ExtensionBetterFuzz;
-import org.zaproxy.zap.extension.betterfuzz.FuzzableComponent;
+import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
 import org.zaproxy.zap.extension.betterfuzz.FuzzerContentPanel;
 import org.zaproxy.zap.extension.betterfuzz.FuzzerHandler;
 import org.zaproxy.zap.extension.search.SearchResult;
@@ -44,7 +44,7 @@ public class HttpFuzzerHandler implements FuzzerHandler {
     }
     
     @Override
-    public void showFuzzDialog(FuzzableComponent fuzzableComponent) {
+    public void showFuzzDialog(org.zaproxy.zap.extension.fuzz.FuzzableComponent fuzzableComponent) {
         showTokenRequests = false;
         getDialog(fuzzableComponent).setVisible(true);
     }
@@ -54,7 +54,7 @@ public class HttpFuzzerHandler implements FuzzerHandler {
         return getContentPanel();
     }
     
-    private HttpFuzzDialog getDialog(FuzzableComponent fuzzableComponent) {
+    private HttpFuzzDialog getDialog(org.zaproxy.zap.extension.fuzz.FuzzableComponent fuzzableComponent) {
         ExtensionBetterFuzz ext = (ExtensionBetterFuzz) Control.getSingleton().getExtensionLoader().getExtension(ExtensionBetterFuzz.NAME);
         return new HttpFuzzDialog(this, ext, fuzzableComponent);
     }

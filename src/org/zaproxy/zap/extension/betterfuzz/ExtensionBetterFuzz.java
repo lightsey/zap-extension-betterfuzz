@@ -51,6 +51,7 @@ import org.zaproxy.zap.extension.betterfuzz.impl.http.HttpFuzzerHandler;
 import org.zaproxy.zap.extension.help.ExtensionHelp;
 import org.zaproxy.zap.extension.httppanel.Message;
 import org.zaproxy.zap.extension.search.SearchResult;
+import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
 
 public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChangedListener, AddonFilesChangedListener {
 
@@ -90,7 +91,7 @@ public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChan
 	 */
 	private void initialize() {
         this.setName(NAME);
-        this.setOrder(48);
+        this.setOrder(49);
 
 		// Force JBroFuzz to use the ZAP user directory
 		Preferences PREFS = Preferences.userRoot().node("owasp/jbrofuzz");
@@ -183,11 +184,11 @@ public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChan
 	}
 
     protected void showFuzzDialog(Component invoker) {
-        if (!(invoker instanceof FuzzableComponent)) {
+        if (!(invoker instanceof org.zaproxy.zap.extension.fuzz.FuzzableComponent)) {
             return;
         }
         
-        FuzzableComponent fuzzableComponent = (FuzzableComponent)invoker;
+        org.zaproxy.zap.extension.fuzz.FuzzableComponent fuzzableComponent = (org.zaproxy.zap.extension.fuzz.FuzzableComponent)invoker;
         
         fuzzableMessageHandler = getFuzzableMessageHandler(fuzzableComponent.getMessageClass());
         if (fuzzableMessageHandler != null) {
@@ -200,7 +201,7 @@ public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChan
     }
 
     private PopupFuzzMenu getPopupMenuFuzz() {
-        if (popupFuzzMenu== null) {
+        if (popupFuzzMenu == null) {
             popupFuzzMenu = new PopupFuzzMenu(this);
             popupFuzzMenu.setText(Constant.messages.getString("betterfuzz.tools.menu.fuzz"));
             popupFuzzMenu.addActionListener(new java.awt.event.ActionListener() {

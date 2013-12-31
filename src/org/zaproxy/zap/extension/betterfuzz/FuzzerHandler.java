@@ -19,12 +19,13 @@ package org.zaproxy.zap.extension.betterfuzz;
 
 import java.util.List;
 import java.util.regex.Pattern;
+import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
 
 import org.zaproxy.zap.extension.search.SearchResult;
 
 public interface FuzzerHandler {
 
-    void showFuzzDialog(FuzzableComponent fuzzableComponent);
+    void showFuzzDialog(org.zaproxy.zap.extension.fuzz.FuzzableComponent fuzzableComponent);
 
     FuzzerContentPanel getFuzzerContentPanel();
     

@@ -34,7 +34,7 @@ import org.zaproxy.zap.extension.anticsrf.ExtensionAntiCSRF;
 import org.zaproxy.zap.extension.betterfuzz.ExtensionBetterFuzz;
 import org.zaproxy.zap.extension.betterfuzz.FuzzDialog;
 import org.zaproxy.zap.extension.betterfuzz.FuzzProcessFactory;
-import org.zaproxy.zap.extension.betterfuzz.FuzzableComponent;
+import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
 import org.zaproxy.zap.extension.httppanel.view.FuzzableMessage;
 
 public class HttpFuzzDialog extends FuzzDialog {
@@ -54,7 +54,7 @@ public class HttpFuzzDialog extends FuzzDialog {
     
     private HttpFuzzerHandler handler;
 
-    public HttpFuzzDialog(HttpFuzzerHandler handler, ExtensionBetterFuzz extension, FuzzableComponent fuzzableComponent) {
+    public HttpFuzzDialog(HttpFuzzerHandler handler, ExtensionBetterFuzz extension, org.zaproxy.zap.extension.fuzz.FuzzableComponent fuzzableComponent) {
         super(extension, fuzzableComponent.getFuzzTarget());
         
         this.handler = handler;

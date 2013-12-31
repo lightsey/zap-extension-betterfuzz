@@ -29,6 +29,7 @@ import org.parosproxy.paros.control.Control;
 import org.parosproxy.paros.control.Control.Mode;
 import org.parosproxy.paros.extension.ExtensionPopupMenuItem;
 import org.zaproxy.zap.extension.httppanel.Message;
+import org.zaproxy.zap.extension.fuzz.FuzzableComponent; // Required since the menu cases into this
 
 public class PopupFuzzMenu extends ExtensionPopupMenuItem {
 
@@ -65,10 +66,10 @@ public class PopupFuzzMenu extends ExtensionPopupMenuItem {
 	public boolean isEnableForComponent(Component invoker) {
 		boolean visible = false;
 
-		if (invoker instanceof FuzzableComponent) {
+		if (invoker instanceof org.zaproxy.zap.extension.fuzz.FuzzableComponent) {
 			visible = true;
 			
-			FuzzableComponent fuzzableComponent = (FuzzableComponent)invoker;
+			org.zaproxy.zap.extension.fuzz.FuzzableComponent fuzzableComponent = (org.zaproxy.zap.extension.fuzz.FuzzableComponent)invoker;
 			
         	if (!fuzzableComponent.canFuzz() || extension.isFuzzing()) {
         		this.setEnabled(false);
