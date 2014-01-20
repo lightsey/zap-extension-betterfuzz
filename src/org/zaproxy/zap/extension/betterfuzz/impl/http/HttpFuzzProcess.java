@@ -31,6 +31,7 @@ import org.zaproxy.zap.extension.anticsrf.ExtensionAntiCSRF;
 import org.zaproxy.zap.extension.betterfuzz.AbstractFuzzProcess;
 import org.zaproxy.zap.extension.betterfuzz.FuzzResult;
 import org.zaproxy.zap.extension.betterfuzz.FuzzResult.State;
+import org.zaproxy.zap.extension.betterfuzz.Fuzzer;
 import org.zaproxy.zap.extension.httppanel.view.FuzzableMessage;
 
 public class HttpFuzzProcess extends AbstractFuzzProcess {
@@ -62,7 +63,7 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
     }
 
     @Override
-    public FuzzResult fuzz(String fuzz) {
+    public FuzzResult fuzz(Fuzzer fuzz) {
         String tokenValue = null;
         HttpFuzzResult fuzzResult = new HttpFuzzResult();
         
@@ -90,9 +91,9 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
         
         String fuzzString;
         if (urlEncode) {
-            fuzzString = encoder.getURLEncode(fuzz);
+            fuzzString = encoder.getURLEncode(fuzz.getFuzzString);
         } else {
-            fuzzString = fuzz;
+            fuzzString = fuzz.getFuzzString;
         }
 
         HttpMessage msg;
@@ -101,14 +102,14 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
             msg = (HttpMessage) fuzzableHttpMessage.fuzz(fuzzString);
         } catch(Exception e) {
             msg = ((HttpMessage)fuzzableHttpMessage.getMessage()).cloneRequest();
-            msg.setNote(fuzz);
+            msg.setNote(fuzz.getFuzzString);
             fuzzResult.setMessage(msg);
 
             fuzzResult.setState(State.ERROR);
             return fuzzResult;
         }
         
-        msg.setNote(fuzz);
+        msg.setNote(fuzz.getFuzzString);
         
         if (tokenValue != null) {
             // Replace token value - only supported in the body right now
@@ -122,7 +123,8 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
         try {
             httpSender.sendAndReceive(msg);
             
-            if (isFuzzStringInjected(msg, fuzz)) {
+            if (fuzz.isInjected(msg.getResponseBody().toString())) {
+                msg.setNote(fuzz.getMatchedString()); // TODO: This should probably be stored in the fuzzResult instead of the msg.
                 fuzzResult.setState(State.INJECTED);
             }
         } catch (HttpException e) {
@@ -138,12 +140,5 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
         return fuzzResult;
     }
     
-    private boolean isFuzzStringInjected(HttpMessage msg, String fuzzString) {
-        HttpMessage originalMessage = (HttpMessage)fuzzableHttpMessage.getMessage();
-
-        final int pos = originalMessage.getResponseBody().toString().indexOf(fuzzString);
-    
-        return msg.getResponseBody().toString().indexOf(fuzzString, pos) != -1;
-    }
     
 }
