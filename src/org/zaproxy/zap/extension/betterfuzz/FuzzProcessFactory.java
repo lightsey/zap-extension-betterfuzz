@@ -16,8 +16,9 @@
  * limitations under the License. 
  */
 package org.zaproxy.zap.extension.betterfuzz;
+import org.zaproxy.zap.extension.betterfuzz.Fuzzer;
 
 public interface FuzzProcessFactory {
 
-    FuzzProcess getFuzzProcess(String fuzz);
+    FuzzProcess getFuzzProcess(Fuzzer fuzz);
 }

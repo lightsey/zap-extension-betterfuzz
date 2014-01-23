@@ -47,7 +47,7 @@ public class Fuzzer {
         return request;
     }
 
-    public boolean isFuzzInjected(String responseBody) {
+    public boolean isInjected(String responseBody) {
         matched = false;
         if (regex != null) {
             match = regex.matcher(responseBody);

@@ -26,6 +26,7 @@ import org.zaproxy.zap.extension.anticsrf.ExtensionAntiCSRF;
 import org.zaproxy.zap.extension.betterfuzz.FuzzProcess;
 import org.zaproxy.zap.extension.betterfuzz.FuzzProcessFactory;
 import org.zaproxy.zap.extension.httppanel.view.FuzzableMessage;
+import org.zaproxy.zap.extension.betterfuzz.Fuzzer;
 
 public class HttpFuzzProcessFactory implements FuzzProcessFactory {
 
@@ -57,7 +58,7 @@ public class HttpFuzzProcessFactory implements FuzzProcessFactory {
     }
     
     @Override
-    public FuzzProcess getFuzzProcess(String fuzz) {
+    public FuzzProcess getFuzzProcess(Fuzzer fuzz) {
         FuzzProcess fuzzProcess = new HttpFuzzProcess(httpSender, fuzzableHttpMessage, extAntiCSRF, acsrfToken, showTokenRequests, urlEncode, encoder);
         fuzzProcess.setFuzz(fuzz);
         

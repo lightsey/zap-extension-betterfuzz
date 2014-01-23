@@ -19,16 +19,17 @@ package org.zaproxy.zap.extension.betterfuzz;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.zaproxy.zap.extension.betterfuzz.Fuzzer;
 
 public abstract class AbstractFuzzProcess implements FuzzProcess {
 
-    private String fuzz;
+    private Fuzzer fuzz;
     
     
     private List<FuzzerListener> listeners = new ArrayList<>(1);
     
     @Override
-    public final void setFuzz(String fuzz) {
+    public final void setFuzz(Fuzzer fuzz) {
         this.fuzz = fuzz;
     }
 
@@ -55,6 +56,6 @@ public abstract class AbstractFuzzProcess implements FuzzProcess {
         listeners.remove(listener);
     }
 
-    protected abstract FuzzResult fuzz(String fuzz);
+    protected abstract FuzzResult fuzz(Fuzzer fuzz);
 
 }

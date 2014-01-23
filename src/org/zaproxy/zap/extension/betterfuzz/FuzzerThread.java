@@ -163,7 +163,7 @@ public class FuzzerThread implements Runnable {
             }
             
             String fuzz = it.next();
-            
+            // TODO: rewire for generating Fuzzer objects instead of strings
             FuzzProcess fp = fuzzProcessFactory.getFuzzProcess(fuzz);
             
             for (FuzzerListener listener : listenerList) {

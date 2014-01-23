@@ -91,9 +91,9 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
         
         String fuzzString;
         if (urlEncode) {
-            fuzzString = encoder.getURLEncode(fuzz.getFuzzString);
+            fuzzString = encoder.getURLEncode(fuzz.getFuzzString());
         } else {
-            fuzzString = fuzz.getFuzzString;
+            fuzzString = fuzz.getFuzzString();
         }
 
         HttpMessage msg;
@@ -102,14 +102,14 @@ public class HttpFuzzProcess extends AbstractFuzzProcess {
             msg = (HttpMessage) fuzzableHttpMessage.fuzz(fuzzString);
         } catch(Exception e) {
             msg = ((HttpMessage)fuzzableHttpMessage.getMessage()).cloneRequest();
-            msg.setNote(fuzz.getFuzzString);
+            msg.setNote(fuzz.getFuzzString());
             fuzzResult.setMessage(msg);
 
             fuzzResult.setState(State.ERROR);
             return fuzzResult;
         }
         
-        msg.setNote(fuzz.getFuzzString);
+        msg.setNote(fuzz.getFuzzString());
         
         if (tokenValue != null) {
             // Replace token value - only supported in the body right now

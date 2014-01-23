@@ -18,11 +18,12 @@
  * limitations under the License. 
  */
 package org.zaproxy.zap.extension.betterfuzz;
+import org.zaproxy.zap.extension.betterfuzz.Fuzzer;
 
 
 public interface FuzzProcess extends Runnable {
 	
-	void setFuzz(String fuzz);
+	void setFuzz(Fuzzer fuzz);
 	
 	void addFuzzerListener(FuzzerListener listener);
 
