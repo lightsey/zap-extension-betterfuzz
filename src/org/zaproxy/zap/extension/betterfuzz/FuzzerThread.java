@@ -24,8 +24,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.owasp.jbrofuzz.core.Fuzzer;
 import org.parosproxy.paros.common.ThreadPool;
+import org.zaproxy.zap.extension.betterfuzz.Fuzzer;
 
 public class FuzzerThread implements Runnable {
 
@@ -141,7 +141,7 @@ public class FuzzerThread implements Runnable {
         }
     }
 
-	private void fuzz(Iterator<String> it) {
+	private void fuzz(Iterator<Fuzzer> it) {
 	    while (it.hasNext()) {
             
             while (pause && ! isStop()) {
@@ -162,7 +162,7 @@ public class FuzzerThread implements Runnable {
                 }
             }
             
-            String fuzz = it.next();
+            Fuzzer fuzz = it.next();
             // TODO: rewire for generating Fuzzer objects instead of strings
             FuzzProcess fp = fuzzProcessFactory.getFuzzProcess(fuzz);
             

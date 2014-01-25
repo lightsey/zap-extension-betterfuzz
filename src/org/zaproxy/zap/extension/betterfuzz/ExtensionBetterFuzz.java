@@ -36,7 +36,6 @@ import java.util.prefs.Preferences;
 import java.util.regex.Pattern;
 
 import org.owasp.jbrofuzz.core.Database;
-import org.owasp.jbrofuzz.core.Fuzzer;
 import org.owasp.jbrofuzz.core.NoSuchFuzzerException;
 import org.owasp.jbrofuzz.version.JBroFuzzPrefs;
 import org.parosproxy.paros.Constant;
@@ -52,6 +51,7 @@ import org.zaproxy.zap.extension.help.ExtensionHelp;
 import org.zaproxy.zap.extension.httppanel.Message;
 import org.zaproxy.zap.extension.search.SearchResult;
 import org.zaproxy.zap.extension.fuzz.FuzzableComponent;
+import org.zaproxy.zap.extension.betterfuzz.Fuzzer;
 
 public class ExtensionBetterFuzz extends ExtensionAdaptor implements SessionChangedListener, AddonFilesChangedListener {
 

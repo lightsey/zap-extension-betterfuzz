@@ -28,6 +28,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.zaproxy.zap.extension.betterfuzz.Fuzzer;
 
 import org.apache.log4j.Logger;
 
@@ -35,8 +36,8 @@ public class FileFuzzer {
 
 	private File file = null;
 	private int length = -1;
-	private List<String> fuzzStrs = new ArrayList<>();
-	private Iterator<String> iter = null;
+	private List<Fuzzer> fuzzers = new ArrayList<>();
+	private Iterator<Fuzzer> iter = null;
     private static Logger log = Logger.getLogger(FileFuzzer.class);
 
 	protected FileFuzzer(File file) {
@@ -48,12 +49,12 @@ public class FileFuzzer {
 		
 		try {
 			in = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-
+            // TODO: Switch to JSON parsing logic
 			String line;
 
 			while ((line = in.readLine()) != null) {
 				if (line.trim().length() > 0 && ! line.startsWith("#")) {
-					fuzzStrs.add(line);
+					fuzzers.add(new Fuzzer(line));
 				}
 			}
 			
@@ -71,15 +72,15 @@ public class FileFuzzer {
 			}
 		}
 		
-		length = fuzzStrs.size();
-		iter = fuzzStrs.iterator();
+		length = fuzzers.size();
+		iter = fuzzers.iterator();
 	}
 	
-	public Iterator<String> getIterator() {
+	public Iterator<Fuzzer> getIterator() {
 		if (length == -1) {
 			init();
 		} else {
-			iter = fuzzStrs.iterator();
+			iter = fuzzers.iterator();
 		}
 		return iter;
 	}
